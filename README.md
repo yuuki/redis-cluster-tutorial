@@ -26,3 +26,9 @@ make cluster/create
 ```
 make example
 ```
+
+# Add new nodes (auto-rebalanced)
+
+```
+make cluster/reinforce:
+```
