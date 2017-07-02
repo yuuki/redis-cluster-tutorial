@@ -16,12 +16,22 @@ up/reinforcement:
 cluster/create:
 	bundle exec ./bin/redis-trib.rb create --replicas 1 127.0.0.1:7100 127.0.0.1:7101 127.0.0.1:7102 127.0.0.1:7103 127.0.0.1:7104 127.0.0.1:7105
 
-.PHONY: cluster/reinforce
-cluster/reinforce:
+.PHONY: cluster/info
+cluster/info:
+	bundle exec ./bin/redis-trib.rb info 127.0.0.1:7100
+
+.PHONY: cluster/add-node
+cluster/add-node:
 	bundle exec ./bin/redis-trib.rb add-node 127.0.0.1:7106 127.0.0.1:7100
 	bundle exec ./bin/redis-trib.rb add-node --slave 127.0.0.1:7107 127.0.0.1:7106
-	@sleep 10
+	sleep 10
+
+.PHONY: cluster/rebalance
+cluster/rebalance:
 	bundle exec ./bin/redis-trib.rb rebalance --use-empty-masters --auto-weights 127.0.0.1:7100
+
+.PHONY: cluster/reinforce
+cluster/reinforce: cluster/add-node cluster/rebalance cluster/info
 
 .PHONY: example
 example:
