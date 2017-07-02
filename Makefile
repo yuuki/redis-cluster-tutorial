@@ -26,3 +26,9 @@ cluster/reinforce:
 .PHONY: example
 example:
 	( cd ./redis-rb-cluster; bundle exec ruby ./example.rb 127.0.0.1 7100 )
+
+.PHONY: clean
+clean:
+	find ./config -name appendonly.aof | xargs rm -f
+	find ./config -name dump.rdb | xargs rm -f
+	find ./config -name nodes.conf | xargs rm -f
