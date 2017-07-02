@@ -30,5 +30,7 @@ make example
 # Add new nodes (auto-rebalanced)
 
 ```
-make cluster/reinforce:
+make up/reinforcement
+# In another console
+make cluster/reinforce
 ```
