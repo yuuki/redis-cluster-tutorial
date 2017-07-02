@@ -1,0 +1,3 @@
+[submodule "redis-rb-cluster"]
+	path = redis-rb-cluster
+	url = git@github.com:antirez/redis-rb-cluster.git
