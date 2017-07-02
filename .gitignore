@@ -1,3 +1,4 @@
 appendonly.aof
 nodes.conf
 dump.rdb
+/supervisord.pid
