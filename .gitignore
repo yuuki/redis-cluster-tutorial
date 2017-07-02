@@ -1,0 +1,3 @@
+appendonly.aof
+nodes.conf
+dump.rdb
